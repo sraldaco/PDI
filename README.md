@@ -48,7 +48,8 @@
 ##### Usando la terminal
 &nbsp;
 ```sh
-$ cd /path-del-proyecto/Filtros/
+$ git clone https://github.com/sraldaco/PDI.git
+$ cd ./PDI/Filtros/
 $ mvn clean install
 $ mvn tomcat7:run
 ```
