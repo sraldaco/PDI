@@ -14,6 +14,15 @@
 * MOSAICO
 * ESCALA DE GRISES
 
+##### Práctica 2:
+
+* Blur
+* Motion Blur
+* Encontrar Bordes
+* Sharpen
+* Emboss
+* Mediano
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)
