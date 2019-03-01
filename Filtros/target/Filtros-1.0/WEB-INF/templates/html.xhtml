@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1" />
+        <meta name="Web Designer" content="Alex Aldaco" />
+        <link rel="Stylesheet" type="text/css" href="#{request.contextPath}/faces/resources/css/bootstrap.min.css" />
+        <title>PDI 2019 2 - FILTROS - Alex Aldaco</title>
+    </h:head>
+
+    <h:body class="bg-secondary">
+        
+        <ui:include src="nav.xhtml" />
+        <div id="content" class="container">
+            <div class="row my-5">
+                <div class="col-md-8">
+                    <h:graphicImage id="image"
+                        value="#{not empty editor.foto ? editor.foto : '/faces/resources/img/chromatic.jpg'}" 
+                        class="d-block mx-auto border border-dark shadow-lg img-fluid" 
+                        style="background-image: url('#{request.contextPath}/faces/resources/img/pattern.jpg')" />
+                </div>
+                <h:panelGroup id="sidebar" class="col-md-4" layout="block">
+                    <div class="bg-light border border-dark shadow-lg">
+                        <div class="bg-dark text-white px-3 py-1">
+                            <h3>Filters App</h3>
+                        </div>
+                        <div  class="p-3">
+                            <ui:insert name="welcome"/>
+                            <c:choose>
+                                <c:when test="#{empty editor.foto}">
+                                    <p>Sube una imagen para comenzar la edición.</p>
+                                    <h:form id="upload" enctype="multipart/form-data"  >
+                                        <h:messages id="mensaje" />
+                                        <div class="custom-file mb-3">
+                                            <h:inputFile value="#{editor.file}" class="custom-file-input" id="foto"
+                                                        required="true"
+                                                        requiredMessage="No has seleccionado ninguna Imagen" > 
+                                               <f:passThroughAttribute name="accept" value=".png, .jpg, .jpeg" />
+                                            </h:inputFile>
+                                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                        </div>
+                                        <h:commandLink class="btn btn-primary"
+                                            action="#{editor.uploadImage()}">
+                                            Subir imagen
+                                            <f:ajax execute="upload" render="sidebar image" />
+                                        </h:commandLink>
+                                    </h:form>
+                                </c:when>
+                                <c:otherwise>
+                                    <ui:insert name="content"/>
+                                </c:otherwise>
+                            </c:choose>
+                            <h:panelGroup layout="block" rendered="#{not empty editor.foto}">
+                                <hr />
+                                <h:form id="fixed">
+                                    <h:commandLink action="#{editor.reset()}"
+                                        class="btn btn-outline-dark btn-sm"
+                                        title="Reinicia al último cambio permanente">
+                                        Reiniciar 
+                                        <f:ajax execute="fixed" render="image" />
+                                    </h:commandLink>
+                                    <h:commandLink action="#{editor.delete()}"
+                                        class="btn btn-link text-danger btn-sm">
+                                        Eliminar imagen
+                                        <f:ajax execute="fixed" render="image sidebar" />
+                                    </h:commandLink>
+                                </h:form>
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </div>
+            
+        </div>
+        <script src="#{request.contextPath}/faces/resources/js/jquery.min.js" />
+        <script src="#{request.contextPath}/faces/resources/js/bootstrap.min.js" />
+        <script>
+            $(".custom-file-input").change(function(e){
+                var fileName = e. target. files[0]. name;
+                if (fileName !== null) {
+                    $(this).parent(".custom-file").children("label").text(fileName);
+                }
+            });
+        </script>
+    </h:body>
+</html>

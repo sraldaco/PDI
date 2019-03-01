@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/html.xhtml">
+
+            <ui:define name="welcome">
+                <p>Bienvenido al Sistema de Proceso Digital de Imagenes 2019-2</p>
+                <p class="text-primary small">
+                    @autor: Alex Aldaco
+                </p>
+                <hr />
+                <ui:fragment rendered="#{not empty editor.foto}">
+                    <p class="small">
+                        Comienza a editar tu imagen. Selecciona los filtros desde 
+                        el menú, que se encuentra en la barra de navegación.
+                    </p>
+                </ui:fragment>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
