@@ -11,14 +11,47 @@
 
             <ui:define name="content">
                 <h5>Black Domino Filter</h5>
-                <h:form id="blackDominoForm">
+                <h:form id="dominoForm">
+                    <div class="form-group">
+                        <h6>Variante de fuente</h6>
+                        <h:selectOneRadio value="#{domino.color}" >
+                            <f:selectItem itemValue="W" itemLabel="Blanco" /> 
+                            <f:selectItem itemValue="B" itemLabel="Negro" />
+                        </h:selectOneRadio>
+                    </div>
+                    <div class="form-group">
+                        <h6>Dirección</h6>
+                        <h:selectOneRadio value="#{domino.izqDer}" >
+                            <f:selectItem itemValue="I" itemLabel="Izquierda" /> 
+                            <f:selectItem itemValue="D" itemLabel="Derecha" />
+                        </h:selectOneRadio>
+                    </div>
+                    <div class="form-group">
+                        <h:selectBooleanCheckbox class="custom-checkbox" id="sg" value="#{domino.sg}" />
+                        <label class="form-check-label mr-2" for="sg">
+                            Escala de grises 
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="size">Tamaño de letra</h:outputLabel>
+                        <h:inputText id="size" value="#{domino.size}" class="form-control mb-2" 
+                                     readonly="true"  />
+                        <h:commandLink class="btn btn-secondary btn-sm mr-1"
+                                       value="+" action="#{domino.sizeUp()}" >
+                            <f:ajax execute="dominoForm" render="size" />
+                        </h:commandLink>
+                        <h:commandLink class="btn btn-secondary btn-sm"
+                                       value="-" action="#{domino.sizeDown()}" >
+                            <f:ajax execute="dominoForm" render="size" />
+                        </h:commandLink>
+                    </div>
                     <h:commandLink class="btn btn-primary btn-sm mt-3"
-                        value="Aplicar filtro" action="#{domino.aplicar(false)}" >
-                        <f:ajax execute="blackDominoForm" render="image" />
+                        value="Aplicar filtro" action="#{domino.aplicar()}" >
+                        <f:ajax execute="dominoForm" render="image" />
                     </h:commandLink>
                     <h:commandLink class="btn btn-light btn-sm mt-3"
                                    value="Hacer permanente" action="#{editor.apply()}" >
-                        <f:ajax execute="blackDominoForm" render="image" />
+                        <f:ajax execute="dominoForm" render="image" />
                     </h:commandLink>
                 </h:form>
             </ui:define>

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -13,22 +14,33 @@
                 <h5>Letters Filter</h5>
                 <h:messages class="alert alert-danger" id="error" />
                 <h:form id="fileForm" enctype="multipart/form-data" >
-                    <h:panelGroup id="fileBlock" class="form-group" layout="block" rendered="#{letters.file eq null}" >
-                        <div class="custom-file">
-                            <h:outputLabel for="file" class="custom-file-label">
-                                Seleccionar
-                            </h:outputLabel>
-                            <h:inputFile id="file" class="custom-file-input" value="#{letters.file}" 
-                                         required="true"
-                                        requiredMessage="No has seleccionado ningún archivo" > 
-                               <f:passThroughAttribute name="accept" value=".txt" />
-                            </h:inputFile>
-                        </div>
-                        <h:commandLink class="btn btn-secondary btn-sm mr-1 mt-2"
-                                       value="Subir archivo" action="#{letters.uploadFile()}" >
-                            <f:ajax execute="fileForm" render="fileBlock lettersForm error" />
-                        </h:commandLink>
-                    </h:panelGroup>
+                    <c:choose>
+                        <c:when test="#{empty letters.fileName}">
+                            <h:panelGroup id="fileBlock" class="form-group" layout="block" >
+                                <div class="custom-file text-truncate">
+                                    <h:outputLabel for="file" class="custom-file-label">
+                                        Seleccionar
+                                    </h:outputLabel>
+                                    <h:inputFile id="file" class="custom-file-input" value="#{letters.file}" 
+                                                 required="true"
+                                                requiredMessage="No has seleccionado ningún archivo" > 
+                                       <f:passThroughAttribute name="accept" value=".txt" />
+                                    </h:inputFile>
+                                </div>
+                                <h:commandLink class="btn btn-secondary btn-sm mr-1 mt-2"
+                                               value="Subir archivo" action="#{letters.uploadFile()}" >
+                                    <f:ajax execute="fileForm" render="fileForm lettersForm error" />
+                                </h:commandLink>
+                            </h:panelGroup>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="bg-white text-secondary text-truncate p-2 mb-3 border">
+                                <h:graphicImage value="/faces/resources/img/file.png" alt="file"
+                                            width="25px"/>
+                                    #{letters.fileName}
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </h:form>
                 <h:form id="lettersForm">
                     <div class="form-group">

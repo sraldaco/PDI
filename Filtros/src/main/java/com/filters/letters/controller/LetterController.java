@@ -48,6 +48,7 @@ public class LetterController implements Serializable {
         "R","S","T","V","Y","Z"};
     
     public LetterController() {
+        this.text = "MNH#QUAD0Y2$%+.";
         this.file = null;
         this.size = 10;
         this.sg = false;
@@ -105,8 +106,15 @@ public class LetterController implements Serializable {
     public void setExclude(boolean exclude) {
         this.exclude = exclude;
     }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
     
-    //public void aplicar(String text,String font, int size, boolean sg) {
     public void aplicar() {
         if (exclude) {
             List<String> cText = chars;
@@ -117,7 +125,7 @@ public class LetterController implements Serializable {
                     cText.remove(ch);
                 }
             } 
-            editor.setImg(Letter.exclude(cText, size, sg, editor.getImg2()));
+            editor.setImg(Letter.apply(cText,"sans-serif", size, sg, editor.getImg2()));
         } else {
             editor.setImg(Letter.string(text, size, sg, editor.getImg2()));
         }
