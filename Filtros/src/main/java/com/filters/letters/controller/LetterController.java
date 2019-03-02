@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -40,23 +41,12 @@ public class LetterController implements Serializable {
     private String text;
     private int size;
     private boolean sg; 
-    private boolean exclude;
-    private List<String> chars;
-    private String[] characters = {
-        "0","1","2","3","4","5","6","7","8","9","#","$","%","&","@","=","+",
-        "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q",
-        "R","S","T","V","Y","Z"};
     
     public LetterController() {
         this.text = "MNH#QUAD0Y2$%+.";
         this.file = null;
         this.size = 10;
         this.sg = false;
-        this.exclude = false;
-        this.chars = new ArrayList<>();
-        for (int i = 1; i < characters.length; i++) {
-            chars.add(characters[i]);
-        }
     }
 
     public Part getFile() {
@@ -78,9 +68,14 @@ public class LetterController implements Serializable {
     public String getText() {
         return text;
     }
-
+    
     public void setText(String text) {
-        this.text = text.trim().toUpperCase();
+        text = text.trim().toUpperCase();
+        if ("".equals(text) || text == null) {
+            
+        } else {
+            this.text = text;
+        }
     }
 
     public int getSize() {
@@ -99,14 +94,6 @@ public class LetterController implements Serializable {
         this.sg = sg;
     }
 
-    public boolean isExclude() {
-        return exclude;
-    }
-
-    public void setExclude(boolean exclude) {
-        this.exclude = exclude;
-    }
-
     public String getFileName() {
         return fileName;
     }
@@ -116,19 +103,11 @@ public class LetterController implements Serializable {
     }
     
     public void aplicar() {
-        if (exclude) {
-            List<String> cText = chars;
-            String[] aText = text.toUpperCase().split("");
-            for(int i = 0; i < text.length(); i++ ) {
-                String ch = aText[i];
-                if (cText.contains(ch)) {
-                    cText.remove(ch);
-                }
-            } 
-            editor.setImg(Letter.apply(cText,"sans-serif", size, sg, editor.getImg2()));
-        } else {
-            editor.setImg(Letter.string(text, size, sg, editor.getImg2()));
-        }
+        List<String> letters = new ArrayList<>();
+        String[] chars = text.split("");
+        letters.addAll(Arrays.asList(chars));
+        letters.add(" ");
+        editor.setImg(Letter.apply(letters, "sans-serif", size, sg, editor.getImg2()));
     }
 
     public void sizeUp() {
@@ -142,7 +121,7 @@ public class LetterController implements Serializable {
     public void uploadFile() throws IOException {
         FacesContext current = FacesContext.getCurrentInstance();
         this.text = "";
-        fileName = getFileName(file);
+        fileName = getFileNameL(file);
         InputStream input = file.getInputStream();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
             String line;
@@ -155,13 +134,13 @@ public class LetterController implements Serializable {
         }
     }
     
-    private String getFileName(Part part) {
-        String fileName = "";
+    private String getFileNameL(Part part) {
+        String fileNameL = "";
         for (String cd : part.getHeader("content-disposition").split(";")) { 
             if (cd.trim().startsWith("filename")) { 
-                fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+                fileNameL = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
             }
         }
-        return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); // MSIE fix. } } return null; }
+        return fileNameL.substring(fileNameL.lastIndexOf('/') + 1).substring(fileNameL.lastIndexOf('\\') + 1); // MSIE fix. } } return null; }
     }
 }

@@ -23,6 +23,16 @@
 * Emboss
 * Mediano
 
+##### Práctica 3:
+
+* Letras
+  - Entrada de texto
+  - Con archivo .txt
+  - Escala de grises
+  - A color 
+* Domino
+* Playin Cards
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)
