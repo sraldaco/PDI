@@ -9,7 +9,6 @@ package com.filters.letters;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -64,6 +63,7 @@ public class Letter {
               while((s = (float)(count + 1) * cell) < p) {
                   count++;
               }
+              count = count > chars.size() -1 ? chars.size() -1 : count;
               letter = chars.get(count);
               graphics.setColor(c);
               graphics.drawString(letter, i, j);

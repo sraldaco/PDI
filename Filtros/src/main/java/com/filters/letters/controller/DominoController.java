@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.filters.letters;
+package com.filters.letters.controller;
 
+import com.filters.letters.Letter;
 import com.filters.main.Editor;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,13 +34,12 @@ public class DominoController implements Serializable {
     private String color;
     private int size;
     private boolean sg;
-    
     private String font;
     
     public DominoController() {
         this.izqDer = "I";
         this.color = "B";
-        this.size = 24;
+        this.size = 12;
         this.sg = true;
         this.font = "Las Vegas Black Dominoes";
     }
