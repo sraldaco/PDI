@@ -45,17 +45,15 @@
                 <h:form id="lettersForm">
                     <div class="form-group">
                         <h:outputLabel id="ltexto" for="texto">
-                            Texto <small>(Cualquier texto)</small>
+                            Texto disponible 
+                            <h:panelGroup id="td" class="small">
+                                #{letters.text}
+                            </h:panelGroup>
                         </h:outputLabel>
-                        <h:inputText id="texto" value="#{letters.text}" class="form-control mb-3"  immediate="true"
-                                     required="true" requiredMessage="Debes ingresar un texto o un caracter" />
+                        <h:inputText id="texto" value="#{letters.text}" class="form-control mb-3" />
                         <h:selectBooleanCheckbox class="custom-checkbox" id="sg" value="#{letters.sg}" />
                         <label class="form-check-label mr-2" for="sg">
                             Escala de grises
-                        </label>
-                        <h:selectBooleanCheckbox class="custom-checkbox" id="exclude" value="#{letters.exclude}" />
-                        <label class="form-check-label" for="sg">
-                            Excluir caracteres
                         </label>
                     </div>
                     <div class="form-group">
