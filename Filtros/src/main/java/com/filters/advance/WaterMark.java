@@ -37,11 +37,17 @@ public class WaterMark {
                 g = g + (r-g);
                 b = b + (r-b);
                 p = (float)(r+g+b)/3f;
-                float av = getAverage(p);
-                if(p <= 180f) {
+                float av;
+                if(p <= 220f) {
+                    av = p < 45f ? .1f : 
+                         p < 80f ? .2f : 
+                         p < 120f ? .4f : 
+                         p < 150f ? .7f : 
+                         p < 170f ? .90f :  1f;
                     r = g = b =  (int)(p*av);
                 } else {
                     float pm = 255f - p;
+                    av = p < 230 ? 0f: 1f; 
                     r = g = b = (int)(p + pm*av);
                 }
             }            
@@ -54,22 +60,5 @@ public class WaterMark {
         return bi;
     }
     
-    private static float getAverage(float p) {
-        if (p <= 18f || p > 237f) {
-            return p <= 18f ? .40f : 1f;
-        } else if (18f < p && p <= 36f || p <= 237f && p > 219f) {
-            return p <= 36f ? .30f : .70f;
-        } else if (36f < p && p <= 54f || p <= 219f && p > 201f) {
-            return p <= 54f ? .20f : .40f;
-        } else if (54f < p && p <= 72f || p <= 201f && p > 183f) {
-            return p <= 72 ? .15f : .20f;
-        } else if (72f < p && p <= 90f || p <= 183f && p > 165f) {
-            return .10f;
-        } else if (90f < p && p <= 108f || p <= 165f && p > 147f) {
-            return .05f;
-        } else {
-            return 0f;
-        }
-    }
-    
+   
 }

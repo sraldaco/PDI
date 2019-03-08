@@ -35,8 +35,8 @@ public class Letter {
               }
               String letter = "";
               float s = 0f;
-              int count = 0;
-              while((s = (float)(count + 1) * cell) < p) {
+              int count = 1;
+              while((s = (float)count * cell) < p) {
                   count++;
               }
               count = count > chars.size() -1 ? chars.size() -1 : count;
