@@ -19,7 +19,7 @@ public class WaterMark {
     
     /* Filtro que quita la marca de agua de una imagen.
      * @param img es el buffer de la imagen original.
-     * @return Devuelve un buffer con los colores seleccionados modificado.
+     * @return Devuelve un buffer sin la marca de agua.
      */
     public static BufferedImage remove(BufferedImage img){
         // saca la medida ancho y alto del buffer que recibe
@@ -61,9 +61,9 @@ public class WaterMark {
         return bi;
     }
     
-   /* Filtro que quita la marca de agua de una imagen.
+   /* Filtro que agrega una marca de agua a una imagen.
      * @param img es el buffer de la imagen original.
-     * @return Devuelve un buffer con los colores seleccionados modificado.
+     * @return Devuelve un buffercon la marca de agua.
      */
     public static BufferedImage add(BufferedImage img){
         String watermark = "Filter watermark!";
