@@ -10,10 +10,18 @@
         <ui:composition template="./../../WEB-INF/templates/html.xhtml">
 
             <ui:define name="content">
-                <h5>Water Mark Remove Filter</h5>
+                <h5>WaterMark Filter</h5>
                 <h:form id="waterForm">
+                    <p class="small text-muted">
+                        El modo <em>"Remover"</em> sólo funciona bien para el caso de las imágenes enviadas por el profesor.
+                    </p>
+                    <h:outputLabel for="options">Selecciona un modo</h:outputLabel>
+                    <h:selectOneMenu id="options" value="#{watermark.filter}" class="custom-select" >
+                        <f:selectItem itemValue="remove" itemLabel="Remover" />
+                        <f:selectItem itemValue="add" itemLabel="Agregar" />
+                    </h:selectOneMenu>
                     <h:commandLink class="btn btn-primary btn-sm mt-3"
-                                   value="Aplicar filtro" action="#{watermark.remove()}" >
+                                   value="Aplicar filtro" action="#{watermark.aplicar()}" >
                         <f:ajax execute="waterForm" render="image" />
                     </h:commandLink>
                     <h:commandLink class="btn btn-light btn-sm mt-3"

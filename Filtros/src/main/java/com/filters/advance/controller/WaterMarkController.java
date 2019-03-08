@@ -26,8 +26,10 @@ public class WaterMarkController implements Serializable {
     @ManagedProperty(value="#{editor}")
     private Editor editor;
     
+    private String filter;
+    
     public WaterMarkController() {
-        
+        this.filter = "remove";
     }
 
     public Editor getEditor() {
@@ -37,8 +39,20 @@ public class WaterMarkController implements Serializable {
     public void setEditor(Editor editor) {
         this.editor = editor;
     }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
+    }
     
-    public void remove() {
-        editor.setImg(WaterMark.remove(editor.getImg2()));
+    public void aplicar() {
+        if (filter.equals("remove")) {
+            editor.setImg(WaterMark.remove(editor.getImg2()));
+            return;
+        }
+        editor.setImg(WaterMark.add(editor.getImg2()));
     }
 }

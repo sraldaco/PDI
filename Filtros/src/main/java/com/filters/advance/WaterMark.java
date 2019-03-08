@@ -7,6 +7,8 @@
 package com.filters.advance;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 /**
@@ -15,8 +17,7 @@ import java.awt.image.BufferedImage;
  */
 public class WaterMark {
     
-    /* Filtro de una imagen que aplica altera los colores rgb de una imagen.
-     * @param r,g,b son los colores que estarán disponibles en la imagen.
+    /* Filtro que quita la marca de agua de una imagen.
      * @param img es el buffer de la imagen original.
      * @return Devuelve un buffer con los colores seleccionados modificado.
      */
@@ -60,5 +61,23 @@ public class WaterMark {
         return bi;
     }
     
-   
+   /* Filtro que quita la marca de agua de una imagen.
+     * @param img es el buffer de la imagen original.
+     * @return Devuelve un buffer con los colores seleccionados modificado.
+     */
+    public static BufferedImage add(BufferedImage img){
+        String watermark = "Filter watermark!";
+        // saca la medida ancho y alto del buffer que recibe
+        int w = img.getWidth(); int h = img.getHeight();
+        // crea un buffer local para no alterar el buffer que recibe
+        BufferedImage bi = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
+        Graphics graphics = bi.getGraphics();
+        graphics.drawImage(img, 0, 0, null);
+        graphics.setFont(new Font("sans-serif", Font.TRUETYPE_FONT, 60));
+        graphics.setColor(new Color(255,0,0,85));
+        graphics.drawString(watermark, (w / 2) - 255, (h / 2) - 30);
+        graphics.dispose();
+        // regresa el buffer local
+        return bi;
+    }
 }

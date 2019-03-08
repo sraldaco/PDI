@@ -33,6 +33,11 @@
 * Domino
 * Playin Cards
 
+##### Práctica 4:
+
+* Agregar marca de agua
+* Remover marca de agua (Sólo casos específicos de la clase)
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)
