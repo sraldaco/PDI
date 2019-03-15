@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/html.xhtml">
+
+            <ui:define name="content">
+                <h5>Sepia Filter</h5>
+                <h:form id="sepiaForm">
+                    <div class="form-group  mb-3">
+                        <label for="level">
+                            Profundidad: <h:panelGroup id="depthNumber">#{sepia.depth}</h:panelGroup>
+                        </label>
+                        <h:inputText id="sepiaDepth" class="form-control-range" value="#{sepia.depth}" immediate="true" >
+                            <f:passThroughAttribute name="type" value="range" />
+                            <f:passThroughAttribute name="min" value="10" />
+                            <f:passThroughAttribute name="max" value="50" />
+                            <f:passThroughAttribute name="step" value="10" />
+                            <f:ajax render="depthNumber" />
+                        </h:inputText>
+                    </div>
+                    <div class="form-group  mb-3">
+                        <label for="level">
+                            Intensidad: <h:panelGroup id="intensityNumber">#{sepia.intensity}</h:panelGroup>
+                        </label>
+                        <h:inputText id="sepiaIntensity" class="form-control-range" value="#{sepia.intensity}" immediate="true" >
+                            <f:passThroughAttribute name="type" value="range" />
+                            <f:passThroughAttribute name="min" value="0" />
+                            <f:passThroughAttribute name="max" value="100" />
+                            <f:passThroughAttribute name="step" value="10" />
+                            <f:ajax render="intensityNumber" />
+                        </h:inputText>
+                    </div>
+                    <h:commandLink class="btn btn-primary btn-sm mt-3"
+                                   value="Aplicar filtro" action="#{sepia.aplicar()}" >
+                        <f:ajax execute="sepiaForm" render="image" />
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-light btn-sm mt-3"
+                                   value="Hacer permanente" action="#{editor.apply()}" >
+                        <f:ajax execute="sepiaForm" render="image" />
+                    </h:commandLink> 
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -38,6 +38,10 @@
 * Agregar marca de agua
 * Remover marca de agua (Sólo casos específicos de la clase)
 
+##### Práctica 5:
+* Óleo
+* Sepia
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)
