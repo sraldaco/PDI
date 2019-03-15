@@ -63,7 +63,7 @@ public class WaterMark {
     
    /* Filtro que agrega una marca de agua a una imagen.
      * @param img es el buffer de la imagen original.
-     * @return Devuelve un buffercon la marca de agua.
+     * @return Devuelve un buffer con la marca de agua.
      */
     public static BufferedImage add(BufferedImage img){
         String watermark = "Filter watermark!";

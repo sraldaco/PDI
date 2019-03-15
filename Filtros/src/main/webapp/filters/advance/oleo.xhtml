@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/html.xhtml">
+
+            <ui:define name="content">
+                <h5>Oleo Filter</h5>
+                <h:form id="oleoForm">
+                    <div class="form-group  mb-3">
+                        <label for="level">
+                            Radio: <h:panelGroup id="radioNumber">#{oleo.radio}px</h:panelGroup>
+                        </label>
+                        <h:inputText id="level" class="form-control-range" value="#{oleo.radio}" immediate="true" >
+                            <f:passThroughAttribute name="type" value="range" />
+                            <f:passThroughAttribute name="min" value="1" />
+                            <f:passThroughAttribute name="max" value="10" />
+                            <f:passThroughAttribute name="step" value="1" />
+                            <f:ajax render="radioNumber" />
+                        </h:inputText>
+                    </div>
+                    <div class="form-check border bg-white">
+                        <h:selectBooleanCheckbox value="#{oleo.sg}" id="grayScale" />
+                        <label class="form-check-label text-danger" for="grayScale">
+                            Gray Scale
+                        </label>
+                    </div>
+                    <h:commandLink class="btn btn-primary btn-sm mt-3"
+                                   value="Aplicar filtro" action="#{oleo.aplicar()}" >
+                        <f:ajax execute="oleoForm" render="image" />
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-light btn-sm mt-3"
+                                   value="Hacer permanente" action="#{editor.apply()}" >
+                        <f:ajax execute="oleoForm" render="image" />
+                    </h:commandLink> 
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
