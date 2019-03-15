@@ -37,7 +37,7 @@ public class Sepia {
                 // saca el promedio
                 int av = (r + g + b) / 3;
                 r = g = b = av;
-                r = r + (int)(sepiaDepth * 2.2f) > 255 ? 255 : r + (int)(sepiaDepth * 1.5f);
+                r = r + (int)(sepiaDepth * 1.8f) > 255 ? 255 : r + (int)(sepiaDepth * 1.8f);
                 g = g + (int)sepiaDepth > 255 ? 255 : g + (int)sepiaDepth;
                 b = b - intensity < 0 ? 0 : b - intensity;
                 // se asigna el color en el pixel 
