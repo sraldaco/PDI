@@ -8,8 +8,6 @@ package com.filters.advance;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 /**
  *
@@ -17,7 +15,7 @@ import java.util.Map.Entry;
  */
 public class Sepia {
     
-    /* Filtro que aplica el efecto pintura al óleo.
+    /* Filtro que aplica el efecto sepia.
      * @param img es el buffer de la imagen original.
      * @return Devuelve el buffer con el filtro aplicado.
      */
