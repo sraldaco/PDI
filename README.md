@@ -39,8 +39,13 @@
 * Remover marca de agua (Sólo casos específicos de la clase)
 
 ##### Práctica 5:
+
 * Óleo
 * Sepia
+
+##### Práctica 6
+
+* Imágenes recursivas 
 
 # Software!
 ##### Para ejecución
