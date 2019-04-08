@@ -47,6 +47,14 @@
 
 * Imágenes recursivas 
 
+##### Práctica 7
+
+* Dither
+  - Aleatorio
+  - Ordenado
+  - Disperso
+  - Difusión de error
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)

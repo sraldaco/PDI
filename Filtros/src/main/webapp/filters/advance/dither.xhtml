@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/html.xhtml">
+
+            <ui:define name="content">
+                <h5>Dither Filter</h5>
+                <h:form id="ditherForm">
+                    <h:outputLabel for="options">Selecciona un modo</h:outputLabel>
+                    <h:selectOneMenu id="options" value="#{dither.mode}" class="custom-select" >
+                        <f:selectItem itemValue="0" itemLabel="Aleatorio" />
+                        <f:selectItem itemValue="1" itemLabel="Ordenado (3x3)" />
+                        <f:selectItem itemValue="2" itemLabel="Disperso (3x3)" />
+                        <f:selectItem itemValue="3" itemLabel="Difusión de error" />
+                    </h:selectOneMenu>
+                    <h:commandLink class="btn btn-primary btn-sm mt-3"
+                                   value="Aplicar filtro" action="#{dither.aplicar()}" >
+                        <f:ajax execute="ditherForm" render="image" />
+                    </h:commandLink>
+                    <h:commandLink class="btn btn-light btn-sm mt-3"
+                                   value="Hacer permanente" action="#{editor.apply()}" >
+                        <f:ajax execute="ditherForm" render="image" />
+                    </h:commandLink> 
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
