@@ -57,7 +57,7 @@
 
 ##### Práctica 8
 * Semitonos
-  - Mtariz espiral
+  - Matriz espiral
 
 # Software!
 ##### Para ejecución

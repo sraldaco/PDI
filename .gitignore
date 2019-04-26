@@ -1,4 +1,5 @@
 .DS_Store
 Filtros/target
 Filtros/test
+Filtros/nb-configuration.xml
 *.idea/*
