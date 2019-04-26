@@ -1,4 +1,4 @@
 .DS_Store
 Filtros/target
 Filtros/test
-Filtros/.idea/*
+*.idea/*
