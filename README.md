@@ -55,6 +55,10 @@
   - Disperso
   - Difusión de error
 
+##### Práctica 8
+* Semitonos
+  - Mtariz espiral
+
 # Software!
 ##### Para ejecución
   - JavaEE 7 (Requerido!)
