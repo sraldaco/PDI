@@ -14,11 +14,11 @@ public class MatchFile {
         int size = storedImages.size();
         int distance = findElement.getDistance();
         int[] range = getRange(distance);
-        int low = range[0], high = low + 1; int jump = 1;
-        while (storedImages.get(high).getCoords().getDistance() < distance && high < range[1]-1) {
-            jump *= 2; low = high; high = high + jump > range[1] -1 ? range[1] -1 : high + jump;
+        int low = range[0], high = low + 1, jump = 1, max = range[1]-1;
+        while (storedImages.get(high).getCoords().getDistance() < distance && high < max) {
+            jump *= 2; low = high; high = high + jump > max ? max : high + jump;
         }
-        return binarySearch(findElement, low, high);
+        return binarySearch(findElement, distance, low, high);
     }
     /*
      * @param elements es el arreglo que contiene los elementos
@@ -27,8 +27,7 @@ public class MatchFile {
      * @param high final del intervalo de búsqueda
      * @return posición del elemento ó -1 si no se encontró
      */
-    private static String binarySearch(CoordsColor findElement, int low, int high) {
-        int distance  = findElement.getDistance();
+    private static String binarySearch(CoordsColor findElement, int distance, int low, int high) {
         boolean match = false;
         while (low <= high) {
             int medium = (low + high) / 2;

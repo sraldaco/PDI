@@ -22,8 +22,8 @@
                         </label>
                         <h:inputText id="level" class="form-control-range" value="#{photomosaic.size}" immediate="true" >
                             <f:passThroughAttribute name="type" value="range" />
-                            <f:passThroughAttribute name="min" value="1" />
-                            <f:passThroughAttribute name="max" value="50" />
+                            <f:passThroughAttribute name="min" value="2" />
+                            <f:passThroughAttribute name="max" value="30" />
                             <f:passThroughAttribute name="step" value="1" />
                             <f:ajax render="levelNumber" />
                         </h:inputText>
@@ -36,7 +36,7 @@
                             <f:passThroughAttribute name="type" value="range" />
                             <f:passThroughAttribute name="min" value="0" />
                             <f:passThroughAttribute name="max" value="100" />
-                            <f:passThroughAttribute name="step" value="10" />
+                            <f:passThroughAttribute name="step" value="5" />
                             <f:ajax render="levelBlend" />
                         </h:inputText>
                     </div>
@@ -46,16 +46,16 @@
                         </h:outputLabel>
                         <h:selectOneMenu value="#{photomosaic.scale}"  id="scaleSelect" class="custom-select">
                             <f:selectItem itemValue = "1" itemLabel = "1x" />
-                            <f:selectItem itemValue = "2" itemLabel = "2x" />
-                            <f:selectItem itemValue = "3" itemLabel = "3x" />
-                            <f:selectItem itemValue = "4" itemLabel = "4x" />
-                            <f:selectItem itemValue = "5" itemLabel = "5x" />
-                            <f:selectItem itemValue = "6" itemLabel = "6x" />
-                            <f:selectItem itemValue = "7" itemLabel = "7x" />
-                            <f:selectItem itemValue = "8" itemLabel = "8x" />
-                            <f:selectItem itemValue = "9" itemLabel = "9x" />
-                            <f:selectItem itemValue = "10" itemLabel = "10x" />
-                            <f:selectItem itemValue = "20" itemLabel = "20x" />
+                            <f:selectItem itemValue = "2" itemLabel = "4x" />
+                            <f:selectItem itemValue = "3" itemLabel = "9x" />
+                            <f:selectItem itemValue = "4" itemLabel = "16x" />
+                            <f:selectItem itemValue = "5" itemLabel = "25x" />
+                            <f:selectItem itemValue = "10" itemLabel = "100x" />
+                            <f:selectItem itemValue = "15" itemLabel = "225x" />
+                            <f:selectItem itemValue = "20" itemLabel = "400x" />
+                            <f:selectItem itemValue = "30" itemLabel = "900x" />
+                            <f:selectItem itemValue = "30" itemLabel = "1600x" />
+                            <f:selectItem itemValue = "50" itemLabel = "2500x" />
                         </h:selectOneMenu>
                     </div>
                     <h:commandLink class="btn btn-primary btn-sm mt-3"

@@ -31,7 +31,8 @@ public class PhotoMosaic {
         BufferedImage bi = new BufferedImage(w * scale,h * scale,BufferedImage.TYPE_INT_RGB);
         Graphics2D graphic = bi.createGraphics();
         graphic.drawImage(img, 0, 0, w * scale, h * scale, null);
-        graphic.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+        if (opacity != 0f)
+            graphic.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
         while (x < w){
             m = ((x + tam) < w)? tam : w - x;
             while (y < h){
@@ -54,13 +55,12 @@ public class PhotoMosaic {
     }
 
     private static BufferedImage getThumb (CoordsColor coords) {
-        BufferedImage thumb = null;
+        String file = Store.getPath() + "thumbs/" + MatchFile.Search(coords);
         try {
-            String file = Store.getPath() + "thumbs/" + MatchFile.Search(coords);
-            thumb = ImageIO.read(new File(file));
+            return ImageIO.read(new File(file));
         } catch (Exception ex) {
             Logger.getLogger(PhotoMosaic.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return thumb;
+        return null;
     }
 }
