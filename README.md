@@ -58,6 +58,13 @@
 ##### Práctica 8
 * Semitonos
   - Matriz espiral
+  
+  ## Proyecto Final
+  ### FotoMosaico
+  
+  Crea fotomosaicos a patir de una imagen. Por ejemplo
+  
+  ![Batman] (https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg | width=100%)
 
 # Software!
 ##### Para ejecución
