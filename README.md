@@ -62,7 +62,7 @@
   ## Proyecto Final
   ### FotoMosaico
   
-  Crea fotomosaicos a patir de una imagen. Por ejemplo
+  Crea fotomosaicos a patir de una imagen. Por ejemplo (Da click en la imagen para verla a detalle).
   
   <img alt="Batman photomosaic" style="max-width:100%;" src="https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg" >
  
