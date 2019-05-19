@@ -5,6 +5,7 @@
  */
 package com.filters.main;
 
+import com.filters.project.PhotoMosaic;
 import com.filters.service.ImageToBase64;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class Editor implements Serializable {
     private Part file;
     private BufferedImage img;
     private BufferedImage img2;
+    private String filename;
     private String ext;
 
     /**
@@ -44,7 +46,9 @@ public class Editor implements Serializable {
     public String getFoto() {
         return foto;
     }
-    
+
+    public void setFoto (String foto) { this.foto = foto; }
+
     public Part getFile() {
         return file;
     }
@@ -57,6 +61,10 @@ public class Editor implements Serializable {
         return img2;
     }
 
+    public String getFilename () { return filename; }
+
+    public String getExt () { return ext; }
+
     public void setImg(BufferedImage img) {
         this.img = img;
         generateB64();
@@ -67,7 +75,8 @@ public class Editor implements Serializable {
         try {
             InputStream input = file.getInputStream();
             img2 = img = ImageIO.read(input);
-            ext = FilenameUtils.getExtension(getFileName(file));
+            filename  = getFileName(file);
+            ext = FilenameUtils.getExtension(filename);
             generateB64();
             file = null;
             input = null;

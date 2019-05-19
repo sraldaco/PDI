@@ -33,7 +33,7 @@ public class Oleo {
                 int x = i + size > w ? w : i + size; 
                 int y = j + size > h ? h : j + size; 
                 // guarda los colores en un radio determinado y la cantidad de veces que aparece
-                HashMap<Color,Integer> freq = new HashMap<Color,Integer>();
+                HashMap<Color,Integer> freq = new HashMap<>();
                 // recorre el radio determinado
                 for (int n = i; n < x; n++) {
                     for (int m = j; m < y; m++) {
