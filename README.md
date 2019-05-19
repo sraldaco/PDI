@@ -68,7 +68,7 @@
   
   Y esta es una foto mía que modifique hace unos años!
   
-  <img alt="Batman photomosaic" style="max-width:100%;" src="Filtros/src/main/webapp/resources/output/output/2014-11-07.jpg" >
+  <img alt="Batman photomosaic" style="max-width:100%;" src="Filtros/src/main/webapp/resources/output/2014-11-07.jpg" >
  
 
 # Software!
