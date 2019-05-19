@@ -35,7 +35,6 @@ public class PhotoMosaicController implements Serializable {
     @ManagedProperty(value="#{editor}")
     private Editor editor;
 
-    @org.jetbrains.annotations.Contract(pure = true)
     public PhotoMosaicController() {
         this.size = 6;
         this.blend = 10;
