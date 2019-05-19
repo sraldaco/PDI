@@ -64,11 +64,11 @@
   
   Crea fotomosaicos a patir de una imagen. Por ejemplo (Da click en la imagen para verla a detalle).
   
-  <img alt="Batman photomosaic" style="max-width:100%;" src="Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg" >
+  <img alt="Batman photomosaic" style="max-width:100%;" src="https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg" >
   
   Y esta es una foto mía que modifique hace unos años!
   
-  <img alt="Batman photomosaic" style="max-width:100%;" src="Filtros/src/main/webapp/resources/output/2014-11-07.jpg" >
+  <img alt="Batman photomosaic" style="max-width:100%;" src="https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/2014-11-07.jpg" >
  
 
 # Software!
