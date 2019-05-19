@@ -10,23 +10,61 @@
         <ui:composition template="./../../WEB-INF/templates/html.xhtml">
 
             <ui:define name="content">
-                <h5>WaterMark Filter</h5>
-                <h:form id="waterForm">
-                    <p class="small text-muted">
-                        El modo <em>"Remover"</em> sólo funciona bien para el caso de las imágenes enviadas por el profesor.
-                    </p>
-                    <h:outputLabel for="options">Selecciona un modo</h:outputLabel>
-                    <h:selectOneMenu id="options" value="#{watermark.filter}" class="custom-select" >
-                        <f:selectItem itemValue="remove" itemLabel="Remover" />
-                        <f:selectItem itemValue="add" itemLabel="Agregar" />
-                    </h:selectOneMenu>
+                <h5>PhotoMosaic</h5>
+                <h:form id="photoMosaicForm">
+                    <div class="form-group">
+                        <label for="level">
+                            Size:
+                            <h:panelGroup id="levelNumber">
+                                #{photomosaic.size}px X #{photomosaic.size}px
+                                <small class="text-danger"><strong>(SMALL MORE SLOW!)</strong></small>
+                            </h:panelGroup>
+                        </label>
+                        <h:inputText id="level" class="form-control-range" value="#{photomosaic.size}" immediate="true" >
+                            <f:passThroughAttribute name="type" value="range" />
+                            <f:passThroughAttribute name="min" value="1" />
+                            <f:passThroughAttribute name="max" value="50" />
+                            <f:passThroughAttribute name="step" value="1" />
+                            <f:ajax render="levelNumber" />
+                        </h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="level">
+                            Opacity: <h:panelGroup id="levelBlend">-#{photomosaic.blend}%</h:panelGroup>
+                        </label>
+                        <h:inputText id="Blend" class="form-control-range" value="#{photomosaic.blend}" immediate="true" >
+                            <f:passThroughAttribute name="type" value="range" />
+                            <f:passThroughAttribute name="min" value="0" />
+                            <f:passThroughAttribute name="max" value="100" />
+                            <f:passThroughAttribute name="step" value="10" />
+                            <f:ajax render="levelBlend" />
+                        </h:inputText>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel for="scaleSelect">
+                            Output scale <small class="text-danger"><strong>(Warning!)</strong></small>
+                        </h:outputLabel>
+                        <h:selectOneMenu value="#{photomosaic.scale}"  id="scaleSelect" class="custom-select">
+                            <f:selectItem itemValue = "1" itemLabel = "1x" />
+                            <f:selectItem itemValue = "2" itemLabel = "2x" />
+                            <f:selectItem itemValue = "3" itemLabel = "3x" />
+                            <f:selectItem itemValue = "4" itemLabel = "4x" />
+                            <f:selectItem itemValue = "5" itemLabel = "5x" />
+                            <f:selectItem itemValue = "6" itemLabel = "6x" />
+                            <f:selectItem itemValue = "7" itemLabel = "7x" />
+                            <f:selectItem itemValue = "8" itemLabel = "8x" />
+                            <f:selectItem itemValue = "9" itemLabel = "9x" />
+                            <f:selectItem itemValue = "10" itemLabel = "10x" />
+                            <f:selectItem itemValue = "20" itemLabel = "20x" />
+                        </h:selectOneMenu>
+                    </div>
                     <h:commandLink class="btn btn-primary btn-sm mt-3"
-                                   value="Aplicar filtro" action="#{watermark.aplicar()}" >
-                        <f:ajax execute="waterForm" render="image" />
+                                   value="Aplicar filtro" action="#{photomosaic.aplicar()}" >
+                        <f:ajax execute="photoMosaicForm" render="image" />
                     </h:commandLink>
                     <h:commandLink class="btn btn-light btn-sm mt-3"
                                    value="Hacer permanente" action="#{editor.apply()}" >
-                        <f:ajax execute="waterForm" render="image" />
+                        <f:ajax execute="photoMosaicForm" render="image" />
                     </h:commandLink> 
                 </h:form>
             </ui:define>
