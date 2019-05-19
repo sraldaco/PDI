@@ -64,7 +64,7 @@
   
   Crea fotomosaicos a patir de una imagen. Por ejemplo
   
-  ![Batman](https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg | width=100%)
+  ![Batman](https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/Batman-Wallpaper-low-quality.jpg | width=600)
 
 # Software!
 ##### Para ejecución
