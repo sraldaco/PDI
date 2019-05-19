@@ -8,8 +8,6 @@ package com.filters.project.controller;
 
 import com.filters.main.Editor;
 import com.filters.project.PhotoMosaic;
-import com.filters.service.Store;
-
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.io.File;
@@ -37,10 +35,11 @@ public class PhotoMosaicController implements Serializable {
     @ManagedProperty(value="#{editor}")
     private Editor editor;
 
+    @org.jetbrains.annotations.Contract(pure = true)
     public PhotoMosaicController() {
-        this.size = 10;
-        this.blend = 30;
-        this.scale = 1;
+        this.size = 6;
+        this.blend = 10;
+        this.scale = 4;
     }
 
     public Editor getEditor() {
