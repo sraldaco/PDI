@@ -15,8 +15,12 @@ public class MatchFile {
         int distance = findElement.getDistance();
         int[] range = getRange(distance);
         int low = range[0], high = low + 1, jump = 1, max = range[1]-1;
-        while (storedImages.get(high).getCoords().getDistance() < distance && high < max) {
-            jump *= 2; low = high; high = high + jump > max ? max : high + jump;
+        boolean min = false;
+        while (storedImages.get(high).getCoords().getDistance() <= distance && high < max) {
+            if (!min)
+                if (storedImages.get(high).getCoords().getDistance() < distance) low = high;
+                else min = true;
+            jump *= 2; high = high + jump > max ? max : high + jump;
         }
         return binarySearch(findElement, distance, low, high);
     }
