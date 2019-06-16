@@ -4,24 +4,14 @@ import java.util.List;
 
 public class MatchFile {
     private static final List<StoredImage> storedImages = Store.getFileStoredList();
-    private static final int[] index = Store.getRangeIndex();
     /*
      * @param elements es el arreglo que contiene los elementos
      * @param findElement es el elemento a encontrar
      * @return resultado de la búsqueda binaria del elemento
      */
     public static String Search(CoordsColor findElement) {
-        int size = storedImages.size();
         int distance = findElement.getDistance();
-        int[] range = getRange(distance);
-        int low = range[0], high = low + 1, jump = 1, max = range[1]-1;
-        boolean min = false;
-        while (storedImages.get(high).getCoords().getDistance() <= distance && high < max) {
-            if (!min)
-                if (storedImages.get(high).getCoords().getDistance() < distance) low = high;
-                else min = true;
-            jump *= 2; high = high + jump > max ? max : high + jump;
-        }
+        int low = 0, high = storedImages.size() - 1;
         return binarySearch(findElement, distance, low, high);
     }
     /*
@@ -32,36 +22,20 @@ public class MatchFile {
      * @return posición del elemento ó -1 si no se encontró
      */
     private static String binarySearch(CoordsColor findElement, int distance, int low, int high) {
-        boolean match = false;
         while (low <= high) {
             int medium = (low + high) / 2;
-            boolean dlow = storedImages.get(medium).getCoords().getDistance() < distance;
-            boolean dhigh = storedImages.get(medium).getCoords().getDistance() > distance;
-            if (dlow) low = medium + 1;
-            else if (dhigh) high = medium - 1;
+            if (storedImages.get(medium).getCoords().getDistance() < distance) low = medium + 1;
+            else if (storedImages.get(medium).getCoords().getDistance() > distance) high = medium - 1;
             else break;
         }
+        low = high - 50 >= 0 ? high - 50 : 0;
+        high = high + 50 <= storedImages.size() -1 ? high + 50 : storedImages.size() -1;
         StoredImage min = storedImages.get(low);
-        for (int i = low; i <= high; i++) {
+        for (int i = low + 1; i <= high; i++) {
             StoredImage current = storedImages.get(i);
             if (current.getCoords().getDistance(findElement) < min.getCoords().getDistance(findElement))
                 min = current;
         }
         return min.getFilename();
-    }
-
-    private static int[] getRange (int distance) {
-        int low = 0, high;
-        if (distance <= 50)  high = index[0];
-        else if (distance <= 100) { low = index[0]; high = index[1]; }
-        else if (distance <= 150) { low = index[1]; high = index[2]; }
-        else if (distance <= 200) { low = index[2]; high = index[3]; }
-        else if (distance <= 250) { low = index[3]; high = index[4]; }
-        else if (distance <= 300) { low = index[4]; high = index[5]; }
-        else if (distance <= 350) { low = index[5]; high = index[6]; }
-        else if (distance <= 400) { low = index[6]; high = index[7]; }
-        else { low = index[7]; high = index[8]; }
-        int[] range = new int[2]; range[0] = low; range[1] = high;
-        return range;
     }
 }

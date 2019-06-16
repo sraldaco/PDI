@@ -2,4 +2,5 @@
 Filtros/target
 Filtros/test
 Filtros/nb-configuration.xml
-*.idea/*
+*.idea/
+*Filtros.iml

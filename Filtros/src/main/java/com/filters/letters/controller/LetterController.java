@@ -103,11 +103,11 @@ public class LetterController implements Serializable {
     }
     
     public void aplicar() {
-        List<String> letters = new ArrayList<>();
         String[] chars = text.split("");
-        letters.addAll(Arrays.asList(chars));
+        List<String> letters = new ArrayList<>(Arrays.asList(chars));
         letters.add(" ");
-        editor.setImg(Letter.apply(letters, "sans-serif", size, sg, editor.getImg2()));
+        editor.setImg(Letter.apply(letters, "Cousine", size, sg, editor.getImg2()));
+        //editor.setImg(Letter.applyBinary(size, editor.getImg2()));
     }
 
     public void sizeUp() {
