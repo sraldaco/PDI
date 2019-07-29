@@ -5,6 +5,15 @@
 - Ayudante: Yessica Martínez Reyes
 - Ayud. Lab.: César Hernández Solís
 
+
+## Demo
+
+Da click en la imagen para ver el video
+
+[![Ver video](screen.png)](https://youtu.be/PZDJBKZ_HbA)
+
+![Descargar FotoMosaico del video (Calidad reducida)](https://raw.githubusercontent.com/sraldaco/PDI/master/Filtros/src/main/webapp/resources/output/capitan-america-low-quality.jpg)
+
 ## Proyecto Final
 ### FotoMosaico
   
