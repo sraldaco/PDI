@@ -38,12 +38,13 @@ public class PhotoMosaic {
             while (y < h){
                 n = ((y + tam) < h)? tam : h - y;
                 int r = 0, g = 0, b = 0;
-                for (int i = 0; i < m; i++) {
-                    for (int j = 0; j < n; j++){
+                for (int i = 0; i < m; i++)
+                    for (int j = 0; j < n; j++) {
                         Color c = new Color(img.getRGB(i + x, j + y));
-                        r += c.getRed(); g += c.getGreen(); b += c.getBlue();
+                        r += c.getRed();
+                        g += c.getGreen();
+                        b += c.getBlue();
                     }
-                }
                 int size = m * n == 0 ? 1 : m * n;
                 r /= size; g /= size; b /= size;
                 BufferedImage thumb = getThumb(new CoordsColor(r, g, b));

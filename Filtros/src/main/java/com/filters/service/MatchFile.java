@@ -28,13 +28,17 @@ public class MatchFile {
             else if (storedImages.get(medium).getCoords().getDistance() > distance) high = medium - 1;
             else break;
         }
-        low = high - 50 >= 0 ? high - 50 : 0;
-        high = high + 50 <= storedImages.size() -1 ? high + 50 : storedImages.size() -1;
+        low = Math.max(low - 100, 0);
+        high = Math.min(high + 100, storedImages.size() -1);
         StoredImage min = storedImages.get(low);
+        double minDistance = min.getCoords().getDistance(findElement);
         for (int i = low + 1; i <= high; i++) {
             StoredImage current = storedImages.get(i);
-            if (current.getCoords().getDistance(findElement) < min.getCoords().getDistance(findElement))
+            double currentDistance = current.getCoords().getDistance(findElement);
+            if (currentDistance < minDistance) {
                 min = current;
+                minDistance = currentDistance;
+            }
         }
         return min.getFilename();
     }
